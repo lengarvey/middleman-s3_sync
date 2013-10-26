@@ -29,7 +29,7 @@ module Middleman
       end
 
       def bucket
-        @bucket ||= connection.directories.get(s3_sync_options.bucket)
+        @bucket ||= connection.directories.select{|b| b.key == s3_sync_options.bucket}.first
       end
 
       protected
